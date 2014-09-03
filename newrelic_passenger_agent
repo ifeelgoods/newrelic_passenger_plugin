@@ -75,6 +75,8 @@ module PassengerAgent
       result
     end
 
+  NewRelic::Plugin::Config.config_file = File.dirname(__FILE__) + '/config/newrelic_plugin.yml'
+
   # Register this agent with the component.
   NewRelic::Plugin::Setup.install_agent :passenger, PassengerAgent
 
