@@ -20,12 +20,16 @@ module PassengerAgent
     # Name of instance that will display in New Relic
     agent_human_labels("Passenger") { "#{`hostname`}" }
 
+    def pid
+      @pid ||= run_command('pgrep -f "nginx: master process"')
+    end
+
 # Send stats to New Relic
     def poll_cycle
 
       #initialize
       @free_memory = FreeMemory.new(run_command(passenger_free))
-      @status = Status.new(run_command(passenger_status))
+      @status = Status.new(run_command("#{passenger_status.to_s} #{pid}"))
 
       # Report Memory usage data from 'free -m' command
       report_metric "passenger/totals/memory", "MB", @free_memory.total_memory
