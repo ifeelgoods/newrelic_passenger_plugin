@@ -21,7 +21,7 @@ module PassengerAgent
     agent_human_labels("Passenger") { "#{`hostname`}" }
 
     def pid
-      @pid ||= run_command('pgrep -f "nginx: master process"')
+      @pid ||= run_command('pgrep -f "nginx: master process"', 20)
     end
 
 # Send stats to New Relic
@@ -29,7 +29,22 @@ module PassengerAgent
 
       #initialize
       @free_memory = FreeMemory.new(run_command(passenger_free))
-      @status = Status.new(run_command("#{passenger_status.to_s} #{pid}"))
+
+      nb_try = 0
+      @status = begin
+        Status.new(run_command("#{passenger_status.to_s} #{pid}"))
+      rescue => exception
+        if nb_try > 1
+          puts exception.message
+          raise exception
+          exit 1
+        else
+          puts "retrying passenger_status"
+          @pid = nil
+          try += 1
+          retry
+        end
+      end
 
       # Report Memory usage data from 'free -m' command
       report_metric "passenger/totals/memory", "MB", @free_memory.total_memory
@@ -69,23 +84,35 @@ module PassengerAgent
     private
 
 # Run command on passenger server to get data
-    def run_command(command)
-
-      result = `#{command}`
-      unless $?.success?
-        $stderr.puts "command: #{command} failed"
-        exit 1
+    def run_command(command, nb_try=1)
+      result = ''
+      try = 0
+      begin
+        result = `#{command}`
+        unless $?.success?
+          puts "command: #{command} failed"
+          raise "command: #{command}  failed"
+        end
+      rescue => exception
+        if try > nb_try
+          raise exception
+        else
+          sleep(try * try)
+          try += 1
+          puts "retrying #{command}"
+          retry
+        end
       end
       result
     end
 
-  NewRelic::Plugin::Config.config_file = File.dirname(__FILE__) + '/config/newrelic_plugin.yml'
+    NewRelic::Plugin::Config.config_file = File.dirname(__FILE__) + '/config/newrelic_plugin.yml'
 
-  # Register this agent with the component.
-  NewRelic::Plugin::Setup.install_agent :passenger, PassengerAgent
+    # Register this agent with the component.
+    NewRelic::Plugin::Setup.install_agent :passenger, PassengerAgent
 
-  # Launch the agent; this never returns.
-  NewRelic::Plugin::Run.setup_and_run
+    # Launch the agent; this never returns.
+    NewRelic::Plugin::Run.setup_and_run
   end
 
 end
