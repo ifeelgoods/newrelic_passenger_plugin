@@ -30,7 +30,7 @@ module PassengerAgent
       #initialize
       @free_memory = FreeMemory.new(run_command(passenger_free))
 
-      @status = Status.new(run_command("#{passenger_status.to_s} #{pid}", 1, Proc.new{@pid = nil}))
+      @status = run_command_status
 
       # Report Memory usage data from 'free -m' command
       report_metric "passenger/totals/memory", "MB", @free_memory.total_memory
@@ -70,7 +70,7 @@ module PassengerAgent
     private
 
 # Run command on passenger server to get data
-    def run_command(command, nb_try=1, block_in_retry=nil)
+    def run_command(command, nb_try=1, quit_on_retry=true)
       result = ''
       try = 0
       begin
@@ -81,14 +81,40 @@ module PassengerAgent
         end
       rescue => exception
         if try > nb_try
+          if quit_on_retry
+            $stderr.puts exception.message
+            exit 1
+          else
+            puts exception.message
+          end
+        else
+          sleep(try * try)
+          try += 1
+          puts "retrying #{command}"
+          retry
+        end
+      end
+      result
+    end
+
+    def run_command_status
+      try = 0
+      result = nil
+      begin
+        command = "#{passenger_status.to_s} #{pid}"
+        result = Status.new(run_command(command, 0, false))
+        unless $?.success?
+          puts "command: #{command} failed"
+          raise "command: #{command}  failed"
+        end
+      rescue => exception
+        if try > 1
           $stderr.puts exception.message
           exit 1
         else
           sleep(try * try)
           try += 1
-          if block_in_retry
-            instance_eval block_in_retry
-          end
+          @pid = nil
           puts "retrying #{command}"
           retry
         end
