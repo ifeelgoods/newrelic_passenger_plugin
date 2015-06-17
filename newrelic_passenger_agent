@@ -14,15 +14,11 @@ module PassengerAgent
 
   class Agent < NewRelic::Plugin::Agent::Base
 
-    agent_guid "com.Gazelle.passenger"
-    agent_version "1.0.1"
+    agent_guid "com.ifeelgoods.passenger"
+    agent_version "1.1.0"
     agent_config_options :passenger_status, :passenger_free
     # Name of instance that will display in New Relic
     agent_human_labels("Passenger") { "#{`hostname`}" }
-
-    def pid
-      @pid ||= run_command('pgrep -f "nginx: master process"', 20)
-    end
 
 # Send stats to New Relic
     def poll_cycle
@@ -101,7 +97,7 @@ module PassengerAgent
       try = 0
       result = nil
       begin
-        command = "#{passenger_status.to_s} #{pid}"
+        command = "#{passenger_status.to_s}"
         result = Status.new(run_command(command, 0, false))
         unless $?.success?
           puts "command: #{command} failed"
@@ -114,7 +110,6 @@ module PassengerAgent
         else
           sleep(try * try)
           try += 1
-          @pid = nil
           puts "retrying #{command}"
           retry
         end

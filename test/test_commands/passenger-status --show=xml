@@ -1,318 +1,176 @@
 <?xml version="1.0" encoding="iso8859-1"?>
-<info version="2">
-   <process_count>6</process_count>
+<info version="3">
+   <passenger_version>5.0.10</passenger_version>
+   <group_count>1</group_count>
+   <process_count>4</process_count>
    <max>6</max>
-   <capacity_used>6</capacity_used>
+   <capacity_used>4</capacity_used>
    <get_wait_list_size>3</get_wait_list_size>
-   <get_wait_list/>
    <supergroups>
       <supergroup>
-         <name>testapp</name>
+         <name>/home/deployer/server_app/current/public (production)</name>
          <state>READY</state>
-         <get_wait_list_size>3</get_wait_list_size>
-         <capacity_used>6</capacity_used>
-         <secret>secret</secret>
+         <get_wait_list_size>0</get_wait_list_size>
+         <capacity_used>4</capacity_used>
          <group default="true">
-            <name>testapp#default</name>
-            <component_name>default</component_name>
-            <app_root>testapp</app_root>
+            <name>/home/deployer/server_app/current/public (production)</name>
+            <component_name>/home/deployer/server_app/current/public (production)</component_name>
+            <app_root>/home/deployer/server_app/current</app_root>
             <app_type>rack</app_type>
-            <environment>backstage</environment>
-            <enabled_process_count>6</enabled_process_count>
+            <environment>production</environment>
+            <uuid>gDOO9DhMIXtEV2aS4I5E</uuid>
+            <enabled_process_count>4</enabled_process_count>
             <disabling_process_count>0</disabling_process_count>
             <disabled_process_count>0</disabled_process_count>
-            <capacity_used>6</capacity_used>
-            <get_wait_list_size>3</get_wait_list_size>
+            <capacity_used>4</capacity_used>
+            <get_wait_list_size>0</get_wait_list_size>
             <disable_wait_list_size>0</disable_wait_list_size>
             <processes_being_spawned>0</processes_being_spawned>
-            <secret>secret</secret>
             <life_status>ALIVE</life_status>
+            <user>deployer</user>
+            <uid>501</uid>
+            <group>www-data</group>
+            <gid>498</gid>
             <options>
-               <app_root>testapp</app_root>
-               <app_group_name>testapp</app_group_name>
+               <app_root>/home/deployer/server_app/current</app_root>
+               <app_group_name>/home/deployer/server_app/current/public (production)</app_group_name>
                <app_type>rack</app_type>
-               <start_command>ruby	/usr/share/passenger/helper-scripts/rack-loader.rb</start_command>
+               <start_command>/opt/nginx/sbin/ruby_wrapper	/usr/local/rvm/gems/ruby-2.2.2/gems/passenger-5.0.10/helper-scripts/rack-loader.rb</start_command>
                <startup_file>config.ru</startup_file>
-               <process_title>Passenger RackApp</process_title>
-               <log_level>0</log_level>
+               <process_title>Passenger RubyApp</process_title>
+               <log_level>3</log_level>
                <start_timeout>90000</start_timeout>
-               <environment>backstage</environment>
+               <environment>production</environment>
                <base_uri>/</base_uri>
                <spawn_method>smart</spawn_method>
                <default_user>nobody</default_user>
-               <default_group>nogroup</default_group>
-               <ruby>ruby</ruby>
+               <default_group>nobody</default_group>
+               <ruby>/opt/nginx/sbin/ruby_wrapper</ruby>
                <python>python</python>
                <nodejs>node</nodejs>
-               <logging_agent_address>unix:/tmp/passenger.1.0.29138/generation-28/logging</logging_agent_address>
+               <logging_agent_address>unix:/tmp/passenger.VI0WHEn/agents.s/logging</logging_agent_address>
                <logging_agent_username>logging</logging_agent_username>
-               <logging_agent_password>secret</logging_agent_password>
+               <logging_agent_password>mxvTZKQw1rqHBHEilDuWKYUl</logging_agent_password>
                <debugger>false</debugger>
                <analytics>false</analytics>
-               <group_secret>secret</group_secret>
-               <min_processes>6</min_processes>
+               <api_key>ARSTiMWlP3LyzEFH</api_key>
+               <min_processes>1</min_processes>
                <max_processes>0</max_processes>
                <max_preloader_idle_time>-1</max_preloader_idle_time>
                <max_out_of_band_work_instances>1</max_out_of_band_work_instances>
             </options>
             <processes>
                <process>
-                  <pid>23882</pid>
-                  <sticky_session_id>1547292125</sticky_session_id>
-                  <gupid>162a1c9-bBvqJSmIH3m</gupid>
-                  <connect_password>ZzvxCqCmxgneN8FozhlfbJgMM1clNGhTIFb2Qba9F8G</connect_password>
+                  <pid>3182</pid>
+                  <sticky_session_id>1786759888</sticky_session_id>
+                  <gupid>16cdddf-hqj4BqgH4z</gupid>
                   <concurrency>1</concurrency>
                   <sessions>1</sessions>
                   <busyness>0</busyness>
-                  <processed>1808</processed>
-                  <spawner_creation_time>1394469657633379</spawner_creation_time>
-                  <spawn_start_time>1394469661476152</spawn_start_time>
-                  <spawn_end_time>1394469661539432</spawn_end_time>
-                  <last_used>1394476264274314</last_used>
-                  <uptime>2h 27m 18s</uptime>
+                  <processed>472</processed>
+                  <spawner_creation_time>1434714177093083</spawner_creation_time>
+                  <spawn_start_time>1434714207502353</spawn_start_time>
+                  <spawn_end_time>1434714207564587</spawn_end_time>
+                  <last_used>1434716202139964</last_used>
+                  <last_used_desc>7s ago</last_used_desc>
+                  <uptime>33m 22s</uptime>
+                  <code_revision>357781f</code_revision>
                   <life_status>ALIVE</life_status>
                   <enabled>ENABLED</enabled>
                   <has_metrics>true</has_metrics>
-                  <cpu>1</cpu>
-                  <rss>95960</rss>
-                  <pss>62252</pss>
-                  <private_dirty>55620</private_dirty>
+                  <cpu>3</cpu>
+                  <rss>295876</rss>
+                  <pss>291256</pss>
+                  <private_dirty>290660</private_dirty>
                   <swap>0</swap>
-                  <real_memory>55620</real_memory>
-                  <vmsize>510864</vmsize>
-                  <process_group_id>23550</process_group_id>
-                  <command>Passenger RackApp: testapp1</command>
-                  <sockets>
-                     <socket>
-                        <name>main</name>
-                        <address>unix:/tmp/passenger.1.0.29138/generation-28/backends/ruby.I2qgOSUCgnVumvqV3BE7Z8AQDQ2RMLCqGlsOhuwAQB9SA</address>
-                        <protocol>session</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                     <socket>
-                        <name>http</name>
-                        <address>tcp://127.0.0.1:44642</address>
-                        <protocol>http</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                  </sockets>
+                  <real_memory>290660</real_memory>
+                  <vmsize>917296</vmsize>
+                  <process_group_id>2632</process_group_id>
+                  <command>Passenger RubyApp: /home/deployer/server_app/current/public (production)</command>
                </process>
                <process>
-                  <pid>23892</pid>
-                  <sticky_session_id>1864751245</sticky_session_id>
-                  <gupid>162a1c9-NKYAxGR8cS7</gupid>
-                  <connect_password>kHp7QFWGuDW5tX9AUhiYDctLKGIgKGKL9YwG1VAcavQ</connect_password>
+                  <pid>25729</pid>
+                  <sticky_session_id>1664689288</sticky_session_id>
+                  <gupid>16cddfc-Md7Qwy0DGC</gupid>
                   <concurrency>1</concurrency>
                   <sessions>0</sessions>
                   <busyness>0</busyness>
-                  <processed>0</processed>
-                  <spawner_creation_time>1394469657633379</spawner_creation_time>
-                  <spawn_start_time>1394469661736616</spawn_start_time>
-                  <spawn_end_time>1394469661788157</spawn_end_time>
-                  <last_used>1394469661788157</last_used>
-                  <uptime>2h 27m 18s</uptime>
+                  <processed>7</processed>
+                  <spawner_creation_time>1434714177093083</spawner_creation_time>
+                  <spawn_start_time>1434715973186545</spawn_start_time>
+                  <spawn_end_time>1434715973251324</spawn_end_time>
+                  <last_used>1434716186523359</last_used>
+                  <last_used_desc>23s ago</last_used_desc>
+                  <uptime>3m 56s</uptime>
+                  <code_revision>357781f</code_revision>
                   <life_status>ALIVE</life_status>
                   <enabled>ENABLED</enabled>
                   <has_metrics>true</has_metrics>
-                  <cpu>1.5</cpu>
-                  <rss>80788</rss>
-                  <pss>42052</pss>
-                  <private_dirty>31756</private_dirty>
+                  <cpu>10</cpu>
+                  <rss>240800</rss>
+                  <pss>190877</pss>
+                  <private_dirty>175268</private_dirty>
                   <swap>0</swap>
-                  <real_memory>31756</real_memory>
-                  <vmsize>442028</vmsize>
-                  <process_group_id>23550</process_group_id>
-                  <command>Passenger RackApp: testapp2</command>
-                  <sockets>
-                     <socket>
-                        <name>main</name>
-                        <address>unix:/tmp/passenger.1.0.29138/generation-28/backends/ruby.VjcMLQprjPquq1SN8EYdM0IkNvTcDIj6fZU6PjFPTcPwd</address>
-                        <protocol>session</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                     <socket>
-                        <name>http</name>
-                        <address>tcp://127.0.0.1:44221</address>
-                        <protocol>http</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                  </sockets>
+                  <real_memory>175268</real_memory>
+                  <vmsize>851460</vmsize>
+                  <process_group_id>2632</process_group_id>
+                  <command>Passenger RubyApp: /home/deployer/server_app/current/public (production)</command>
                </process>
                <process>
-                  <pid>23902</pid>
-                  <sticky_session_id>1673422022</sticky_session_id>
-                  <gupid>162a1c9-44gXyJouK1E</gupid>
-                  <connect_password>AmEH8mZ3beizB8RK063TV4GG28QdPPx2K45FCPWHGZb</connect_password>
+                  <pid>30354</pid>
+                  <sticky_session_id>921136001</sticky_session_id>
+                  <gupid>16cde00-NdgU7tfbSb</gupid>
                   <concurrency>1</concurrency>
                   <sessions>0</sessions>
                   <busyness>0</busyness>
                   <processed>1</processed>
-                  <spawner_creation_time>1394469657633379</spawner_creation_time>
-                  <spawn_start_time>1394469661886414</spawn_start_time>
-                  <spawn_end_time>1394469661942279</spawn_end_time>
-                  <last_used>1394473433658298</last_used>
-                  <uptime>2h 27m 18s</uptime>
+                  <spawner_creation_time>1434714177093083</spawner_creation_time>
+                  <spawn_start_time>1434716187277078</spawn_start_time>
+                  <spawn_end_time>1434716187367442</spawn_end_time>
+                  <last_used>1434716187367575</last_used>
+                  <last_used_desc>22s ago</last_used_desc>
+                  <uptime>22s</uptime>
+                  <code_revision>357781f</code_revision>
                   <life_status>ALIVE</life_status>
                   <enabled>ENABLED</enabled>
                   <has_metrics>true</has_metrics>
-                  <cpu>2</cpu>
-                  <rss>82896</rss>
-                  <pss>45713</pss>
-                  <private_dirty>37360</private_dirty>
+                  <cpu>1</cpu>
+                  <rss>181124</rss>
+                  <pss>118547</pss>
+                  <private_dirty>96148</private_dirty>
                   <swap>0</swap>
-                  <real_memory>37360</real_memory>
-                  <vmsize>507872</vmsize>
-                  <process_group_id>23550</process_group_id>
-                  <command>Passenger RackApp: testapp3</command>
-                  <sockets>
-                     <socket>
-                        <name>main</name>
-                        <address>unix:/tmp/passenger.1.0.29138/generation-28/backends/ruby.qdXRfxOoRPtX5NznM30F0vH5CZkNZLCNiI163g5v7QgnA</address>
-                        <protocol>session</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                     <socket>
-                        <name>http</name>
-                        <address>tcp://127.0.0.1:42272</address>
-                        <protocol>http</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                  </sockets>
+                  <real_memory>96148</real_memory>
+                  <vmsize>786020</vmsize>
+                  <process_group_id>2632</process_group_id>
+                  <command>Passenger RubyApp: /home/deployer/server_app/current/public (production)</command>
                </process>
                <process>
-                  <pid>23912</pid>
-                  <sticky_session_id>308097807</sticky_session_id>
-                  <gupid>162a1c9-vyrxba7bTRV</gupid>
-                  <connect_password>DQaHQXwUO8czGBL46o9hJyDu0ljExuDcB9zGlghEGXH</connect_password>
+                  <pid>30363</pid>
+                  <sticky_session_id>487712374</sticky_session_id>
+                  <gupid>16cde00-MCl3nWocQF</gupid>
                   <concurrency>1</concurrency>
                   <sessions>0</sessions>
                   <busyness>0</busyness>
-                  <processed>0</processed>
-                  <spawner_creation_time>1394469657633379</spawner_creation_time>
-                  <spawn_start_time>1394469662028943</spawn_start_time>
-                  <spawn_end_time>1394469662081548</spawn_end_time>
-                  <last_used>1394469662081548</last_used>
-                  <uptime>2h 27m 17s</uptime>
+                  <processed>1</processed>
+                  <spawner_creation_time>1434714177093083</spawner_creation_time>
+                  <spawn_start_time>1434716187618942</spawn_start_time>
+                  <spawn_end_time>1434716187752067</spawn_end_time>
+                  <last_used>1434716187752199</last_used>
+                  <last_used_desc>22s ago</last_used_desc>
+                  <uptime>22s</uptime>
+                  <code_revision>357781f</code_revision>
                   <life_status>ALIVE</life_status>
                   <enabled>ENABLED</enabled>
                   <has_metrics>true</has_metrics>
-                  <cpu>0</cpu>
-                  <rss>80716</rss>
-                  <pss>41548</pss>
-                  <private_dirty>31060</private_dirty>
+                  <cpu>1</cpu>
+                  <rss>182052</rss>
+                  <pss>103334</pss>
+                  <private_dirty>64816</private_dirty>
                   <swap>0</swap>
-                  <real_memory>31060</real_memory>
-                  <vmsize>507756</vmsize>
-                  <process_group_id>23550</process_group_id>
-                  <command>Passenger RackApp: testapp4</command>
-                  <sockets>
-                     <socket>
-                        <name>main</name>
-                        <address>unix:/tmp/passenger.1.0.29138/generation-28/backends/ruby.6TkQa1wEH7eNNQE9w9OPEHO3mevOdytcI8tS0a5hhNPJC</address>
-                        <protocol>session</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                     <socket>
-                        <name>http</name>
-                        <address>tcp://127.0.0.1:42439</address>
-                        <protocol>http</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                  </sockets>
-               </process>
-               <process>
-                  <pid>23922</pid>
-                  <sticky_session_id>1803829052</sticky_session_id>
-                  <gupid>162a1c9-0pRHynr4qWx</gupid>
-                  <connect_password>maMJLT9mznT9sEchcsO81Ojk7gPNsoAAE8tPa5H3GX0</connect_password>
-                  <concurrency>1</concurrency>
-                  <sessions>0</sessions>
-                  <busyness>0</busyness>
-                  <processed>327</processed>
-                  <spawner_creation_time>1394469657633379</spawner_creation_time>
-                  <spawn_start_time>1394469662157504</spawn_start_time>
-                  <spawn_end_time>1394469662210130</spawn_end_time>
-                  <last_used>1394476849842988</last_used>
-                  <uptime>2h 27m 17s</uptime>
-                  <life_status>ALIVE</life_status>
-                  <enabled>ENABLED</enabled>
-                  <has_metrics>true</has_metrics>
-                  <cpu>0</cpu>
-                  <rss>98920</rss>
-                  <pss>63865</pss>
-                  <private_dirty>56820</private_dirty>
-                  <swap>0</swap>
-                  <real_memory>56820</real_memory>
-                  <vmsize>510220</vmsize>
-                  <process_group_id>23550</process_group_id>
-                  <command>Passenger RackApp: testapp5</command>
-                  <sockets>
-                     <socket>
-                        <name>main</name>
-                        <address>unix:/tmp/passenger.1.0.29138/generation-28/backends/ruby.G89Akn6z2CThiAHe3ZpJBJgkGquHDFybEQ63h1IFwp0jb</address>
-                        <protocol>session</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                     <socket>
-                        <name>http</name>
-                        <address>tcp://127.0.0.1:57860</address>
-                        <protocol>http</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                  </sockets>
-               </process>
-               <process>
-                  <pid>23932</pid>
-                  <sticky_session_id>176412821</sticky_session_id>
-                  <gupid>162a1c9-77hsibts5Iz</gupid>
-                  <connect_password>vJ6Gy2VPvCMj17jeOiww3nX2IiHUiJYcWarfmm3E7cx</connect_password>
-                  <concurrency>1</concurrency>
-                  <sessions>0</sessions>
-                  <busyness>0</busyness>
-                  <processed>1121</processed>
-                  <spawner_creation_time>1394469657633379</spawner_creation_time>
-                  <spawn_start_time>1394469662287782</spawn_start_time>
-                  <spawn_end_time>1394469662340632</spawn_end_time>
-                  <last_used>1394478499418904</last_used>
-                  <uptime>2h 27m 17s</uptime>
-                  <life_status>ALIVE</life_status>
-                  <enabled>ENABLED</enabled>
-                  <has_metrics>true</has_metrics>
-                  <cpu>0</cpu>
-                  <rss>99700</rss>
-                  <pss>65070</pss>
-                  <private_dirty>58144</private_dirty>
-                  <swap>0</swap>
-                  <real_memory>58144</real_memory>
-                  <vmsize>444780</vmsize>
-                  <process_group_id>23550</process_group_id>
-                  <command>Passenger RackApp: testapp6</command>
-                  <sockets>
-                     <socket>
-                        <name>main</name>
-                        <address>unix:/tmp/passenger.1.0.29138/generation-28/backends/ruby.amgnQjyWLKZUn3nwV335j9csO3vrLkiJv9bKnznx4Nwvz</address>
-                        <protocol>session</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                     <socket>
-                        <name>http</name>
-                        <address>tcp://127.0.0.1:37759</address>
-                        <protocol>http</protocol>
-                        <concurrency>1</concurrency>
-                        <sessions>0</sessions>
-                     </socket>
-                  </sockets>
+                  <real_memory>55620</real_memory>
+                  <vmsize>786116</vmsize>
+                  <process_group_id>2632</process_group_id>
+                  <command>Passenger RackApp: testapp1</command>
                </process>
             </processes>
          </group>

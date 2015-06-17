@@ -14,7 +14,7 @@ class PassengerStatusTest < Test::Unit::TestCase
   end
 
   test "number of running passenger processes are parsed correctly" do
-    assert_equal 6, @status_parser.current
+    assert_equal 4, @status_parser.current
   end
 
   test "requests waiting on global queue are parsed correctly" do
@@ -26,7 +26,7 @@ class PassengerStatusTest < Test::Unit::TestCase
   end
 
   test "CPU (summed as total) parsed correctly" do
-    assert_equal 4.5, @status_parser.cpu
+    assert_equal 15, @status_parser.cpu
   end
 
   test "memory by app parsed correctly" do
@@ -34,7 +34,7 @@ class PassengerStatusTest < Test::Unit::TestCase
   end
 
   test "time since last used parsed correctly" do
-    assert 5670 < @status_parser.last_used_time["1"]
+    assert 10 <  @status_parser.last_used_time["1"]
   end
 
 end
